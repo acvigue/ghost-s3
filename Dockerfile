@@ -1,4 +1,4 @@
-FROM ghost:alpine
+FROM ghcr.io/acvigue/ghost:main
 
 WORKDIR /var/lib/ghost
 

@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "timezone": "America/New_York",
+  "dependencyDashboard": true,
+  "dependencyDashboardTitle": "Renovate Dashboard",
+  "commitMessageSuffix": "",
+  "commitBody": "Signed-off-by: Aiden Vigue <aiden@vigue.me>",
+  "suppressNotifications": ["prIgnoreNotification"],
+  "rebaseWhen": "conflicted",
+  "assignees": ["@acvigue"],
+  "extends": [
+    "config:base"
+  ]
+}

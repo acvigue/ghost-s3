@@ -2,6 +2,6 @@ FROM ghost:alpine
 
 WORKDIR /var/lib/ghost
 
-RUN npm install ghost-storage-adapter-r2 \
-    && mkdir -p ./content.orig/adapters/storage \
-    && cp -vr ./node_modules/ghost-storage-adapter-r2 ./content.orig/adapters/storage/r2
+npm install s3-ghost
+mkdir -p ./content/adapters/storage
+cp -r ./node_modules/s3-ghost ./content/adapters/storage/s3-ghost

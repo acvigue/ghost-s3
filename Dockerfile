@@ -2,6 +2,6 @@ FROM ghost:alpine
 
 WORKDIR /var/lib/ghost
 
-RUN npm install ghos3-av \
-&& mkdir -p ./content/adapters/storage/s3 \
-&& cp -r ./node_modules/ghos3-av/* ./content/adapters/storage/s3
+RUN npm install --prefix /tmp/ghos3 ghos3-av && \
+    cp -r /tmp/ghos3/node_modules/ghos3-av current/core/server/adapters/storage/s3 && \
+    rm -r /tmp/ghos3

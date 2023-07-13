@@ -1,7 +1,7 @@
-FROM ghost:alpine as cloudinary
-RUN apk add g++ make python3
-RUN su-exec node yarn add ghos3-av
-
 FROM ghost:alpine
-COPY --chown=node:node --from=cloudinary $GHOST_INSTALL/node_modules $GHOST_INSTALL/node_modules
-COPY --chown=node:node --from=cloudinary $GHOST_INSTALL/node_modules/ghos3-av $GHOST_INSTALL/content/adapters/storage/s3
+
+WORKDIR /var/lib/ghost
+
+RUN npm install git:https://github.com/acvigue/ghost-storage-adapter-s3.git \
+&& mkdir -p ./content/adapters/storage \
+&& cp -r ./node_modules/ghost-storage-adapter-s3 ./content/adapters/storage/s3

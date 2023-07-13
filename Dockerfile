@@ -2,6 +2,6 @@ FROM ghost:alpine
 
 WORKDIR /var/lib/ghost
 
-RUN npm install ghost-storage-adapter-s3-av \
+RUN npm install ghos3-urlfix \
 && mkdir -p ./content/adapters/storage \
-&& cp -r ./node_modules/ghost-storage-adapter-s3-av ./content/adapters/storage/s3
+&& cp ./node_modules/ghos3-urlfix/index.js ./content/adapters/storage/s3.js

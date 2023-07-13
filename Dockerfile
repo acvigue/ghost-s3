@@ -1,7 +1,7 @@
-FROM ghost:alpine
+FROM ghost:5.53.0
 
 WORKDIR /var/lib/ghost
 
 RUN npm install ghost-storage-adapter-s3 \
  && mkdir -p ./content/adapters/storage \
- && cp -r ./node_modules/ghost-storage-adapter-s3 ./content/adapters/storage/s3
+ && cp -r ./node_modules/ghost-storage-adapter-s3 /var/lib/ghost/content/adapters/storage/s3

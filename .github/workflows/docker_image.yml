@@ -1,8 +1,9 @@
-name: Publish Docker image
+name: Docker Build
 on:
   push:
     branches: [main]
-  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * 1,3,5"
 jobs:
   push_to_registry:
     name: Push Docker image to GitHub Packages
@@ -20,7 +21,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
-          password: ${{ secrets.CR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Docker Build
         uses: docker/build-push-action@v4
         with:
@@ -28,3 +29,5 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           platforms: linux/arm64,linux/amd64
           tags: ghcr.io/${{ github.repository_owner }}/ghost-s3:main
+          cache-from: type=registry,ref=${{ github.repository_owner }}/ghost-s3:main
+          cache-to: type=inline

@@ -29,7 +29,7 @@ jobs:
         with:
           push: true
           builder: ${{ steps.buildx.outputs.name }}
-          platforms: linux/arm64,linux/amd64
+          platforms: linux/arm64,linux/amd64,linux/arm/v7
           tags: ghcr.io/${{ github.repository_owner }}/ghost-s3:main
           cache-from: type=gha
           cache-to: type=gha,mode=max
